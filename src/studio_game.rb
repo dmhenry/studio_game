@@ -1,10 +1,19 @@
 # frozen_string_literal: true
 
-name1 = "Larry"
-name2 = "Curly"
-name3 = "Moe"
+name1 = "larry"
+name2 = "curly"
+name3 = "moe"
+name4 = "shemp"
 health1 = 60
+health2 = health1
+health1 = 30
+health3 = 90
+health4 = 100
 
-puts "#{name1}'s health is #{health1 / 9.0}"
+puts "#{name1.capitalize}'s health is #{health1}."
+puts "#{name2.upcase}'s health is #{health2}."
+puts "#{name3.capitalize}'s health is #{health3}.".center(50, '*')
+puts "#{name4.capitalize.ljust(30, '.')} #{health4}."
 
-puts "Players:\n\t#{name1}\n\t#{name2}\n\t#{name3}"
+now = Time.new
+puts "The game started on #{now.strftime('%A %m/%e/%Y')} at #{now.strftime('%I:%M %p')}."
