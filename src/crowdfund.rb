@@ -1,24 +1,24 @@
 # frozen_string_literal: true
 
 class Project
-  def initialize(name, funding, target)
+  def initialize(name, funding, goal)
     @name = name
-    @funding = funding
-    @target = target
+    @funding_current = funding
+    @funding_goal = goal.freeze
   end
 
-  def increaseBy(gain = 0)
-    @funding += gain
-    "Project #{@name} has gained \$#{gain}!"
+  def increase_by(funding = 0)
+    @funding_current += funding
+    "Project #{@name} has gained \$#{funding}!"
   end
 
-  def decreaseBy(loss = 0)
-    @funding -= loss
-    "Project #{@name} has lost \$#{loss}!"
+  def decrease_by(funding = 0)
+    @funding_current -= funding
+    "Project #{@name} has lost \$#{funding}!"
   end
 
   def to_s
-    "Project #{@name} has \$#{@funding} in funding towards a goal of \$#{@target}."
+    "Project #{@name} has \$#{@funding_current} in funding towards a goal of \$#{@funding_goal}."
   end
 end
 
@@ -27,7 +27,7 @@ proj_xyz = Project.new("xyz", 25, 75)
 
 puts proj_lmn
 puts proj_xyz
-puts proj_lmn.decreaseBy(15)
-puts proj_xyz.increaseBy(25)
+puts proj_lmn.decrease_by(15)
+puts proj_xyz.increase_by(25)
 puts proj_lmn
 puts proj_xyz
