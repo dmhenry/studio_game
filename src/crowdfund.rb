@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class Project
+  attr_accessor :name
+  attr_reader   :funding_current, :funding_goal
+
   def initialize(name, funding, goal)
     @name = name
     @funding_current = funding
@@ -17,8 +20,18 @@ class Project
     "Project #{@name} has lost \$#{funding}!"
   end
 
+  def remaining_funding
+    needed = @funding_goal - @funding_current
+    if (needed > 0)
+      needed
+    else
+      0
+    end
+  end
+
   def to_s
-    "Project #{@name} has \$#{@funding_current} in funding towards a goal of \$#{@funding_goal}."
+    "Project #{@name} has \$#{@funding_current} in funding towards a goal of \$#{@funding_goal}.\
+ \$#{remaining_funding} are still needed!"
   end
 end
 
