@@ -31,12 +31,32 @@ class Player
   end
 end
 
-player1 = Player.new("moe")
-puts player1
+class Game
+  attr_reader :name
 
-player2 = Player.new("larry", 60)
-player2.name = "lawrence"
-puts player2
+  def initialize(name)
+    @name = name
+    @players = Array.new
+  end
 
-player3 = Player.new("curly", 125)
-puts player3
+  def add(player:)
+    @players << player
+  end
+
+  def play
+    @players.each do |p|
+      puts p
+    end
+
+    @players.each do |p|
+      p.blam
+      2.times { p.w00t }
+    end
+  end
+end
+
+game = Game.new("Knuckleheads")
+game.add(player: Player.new("moe"))
+game.add(player: Player.new("curly"))
+game.add(player: Player.new("larry"))
+game.play
