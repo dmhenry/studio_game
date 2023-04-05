@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require_relative "../src/project"
 
 describe Project do
-
   before do
     @funding_init = 50
     @funding_goal = 100
