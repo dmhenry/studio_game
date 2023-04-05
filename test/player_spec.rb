@@ -1,7 +1,8 @@
-require_relative '../src/player'
+# frozen_string_literal: true
+
+require_relative "../src/player"
 
 describe Player do
-
   before do
     $stdout = StringIO.new # redirect output during tests
     @initial_health = 150

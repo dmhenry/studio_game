@@ -1,11 +1,11 @@
-require_relative '../src/project'
+require_relative "../src/project"
 
 describe Project do
 
   before do
     @funding_init = 50
     @funding_goal = 100
-    @project = Project.new(name: "name", funding: @funding_init, goal: @funding_goal) 
+    @project = Project.new(name: "name", funding: @funding_init, goal: @funding_goal)
   end
 
   it "has an initial target funding amount" do
