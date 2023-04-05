@@ -22,7 +22,7 @@ class Project
 
   def remaining_funding
     needed = @funding_goal - @funding_current
-    if (needed > 0)
+    if needed.positive?
       needed
     else
       0
@@ -30,7 +30,7 @@ class Project
   end
 
   def goal_met?
-    remaining_funding == 0
+    remaining_funding.zero?
   end
 
   def to_s

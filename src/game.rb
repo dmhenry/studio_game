@@ -5,7 +5,7 @@ class Game
 
   def initialize(name)
     @name = name
-    @players = Array.new
+    @players = []
   end
 
   def add(player:)

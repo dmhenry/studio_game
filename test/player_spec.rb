@@ -3,9 +3,9 @@ require_relative '../src/player'
 describe Player do
 
   before do
-    $stdout = StringIO.new  # prevent console output during test execution
-    @init_health = 150
-    @player = Player.new("larry", @init_health)
+    $stdout = StringIO.new # redirect output during tests
+    @initial_health = 150
+    @player = Player.new("larry", @initial_health)
   end
 
   it "has a capitalized name" do
@@ -13,26 +13,47 @@ describe Player do
   end
 
   it "has an initial health" do
-    expect(@player.health).to eq(@init_health)
+    expect(@player.health).to eq(@initial_health)
+  end
+
+  it "has a string representation" do
+    expect(@player.to_s).to eq("I'm Larry with a health of #{@initial_health} and a score of \
+#{@initial_health + @player.name.length}.")
   end
 
   it "computes a score as the sum of its health and length of name" do
-    expect(@player.score).to eq(@init_health + @player.name.length)
+    expect(@player.score).to eq(@initial_health + @player.name.length)
   end
 
   it "increases health by 15 when w00ted" do
     @player.w00t
 
-    expect(@player.health).to eq(@init_health + 15)
+    expect(@player.health).to eq(@initial_health + 15)
   end
 
-  it "decreses health by 10 when blammed" do
+  it "decreases health by 10 when blammed" do
     @player.blam
 
-    expect(@player.health).to eq(@init_health - 10)
+    expect(@player.health).to eq(@initial_health - 10)
   end
 
-  it "has a string representation" do
-    expect(@player.to_s).to eq("I'm Larry with a health of #{@init_health} and a score of #{@init_health + @player.name.length}.")
+  context "with a health greater than 100" do
+    before do
+      @player = Player.new("larry", 150)
+    end
+
+    it "is strong" do
+      expect(@player).to be_strong
+    end
+  end
+
+  context "with a health of 100 or less" do
+    before do
+      @player = Player.new("larry", 100)
+    end
+
+    it "is wimpy" do
+      expect(@player).not_to be_strong
+    end
   end
 end

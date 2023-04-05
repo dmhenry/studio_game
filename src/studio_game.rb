@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative 'player'
-require_relative 'game'
+require_relative "player"
+require_relative "game"
 
 game = Game.new("Knuckleheads")
 game.add(player: Player.new("moe"))

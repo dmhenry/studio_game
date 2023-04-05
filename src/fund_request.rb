@@ -22,8 +22,8 @@ class FundRequest
 
   def to_s
     s = "Project '#{@name}' (#{@projects.length}):"
-    @projects.each do |name, project|
-      s += "\n  #{project.to_s}"
+    @projects.each do |_, project|
+      s += "\n  #{project}"
     end
     s
   end
