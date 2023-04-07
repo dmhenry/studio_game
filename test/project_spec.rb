@@ -4,29 +4,23 @@ require_relative "../src/project"
 
 describe Project do
   before do
-    @funding_init = 50
-    @funding_goal = 100
-    @project = Project.new(name: "name", funding: @funding_init, goal: @funding_goal)
+    stdout = StringIO.new
+    @funding_current = 500
+    @funding_goal = 3000
+    @abc = Project.new(name: "abc", funding: @funding_current, goal: @funding_goal)
   end
 
-  it "has an initial target funding amount" do
-    expect(@project.funding_current).to eq(@funding_init)
+  it "has remaining funding equal to goal less initial funding" do
+    expect(@abc.remaining_funding).to eq(@abc.funding_goal - @abc.funding_current)
   end
 
-  it "has an initial target funding computes the total funding outstanding as the target funding minus the funding amount" do
-    expect(@project.remaining_funding).to eq(@funding_goal - @funding_init)
+  it "has current funding equal inital funding plus increase" do
+    @abc.increase_funding_by(500)
+    expect(@abc.remaining_funding).to eq(@abc.funding_goal - @abc.funding_current)
   end
 
-  it "increases funds by the corresponding amount when funds are added" do
-    funding_increase = 25
-    @project.increase_funding_by(funding_increase)
-    expect(@project.funding_current).to eq(@funding_init + funding_increase)
+  it "has current funding equal inital funding minus decrease" do
+    @abc.decrease_funding_by(500)
+    expect(@abc.remaining_funding).to eq(@abc.funding_goal - @abc.funding_current)
   end
-
-  it "decreases funds by the corresponding amount when funds are removed" do
-    funding_decrease = 25
-    @project.decrease_funding_by(funding_decrease)
-    expect(@project.funding_current).to eq(@funding_init - funding_decrease)
-  end
-
 end
