@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require_relative "player"
-require_relative "die"
+require_relative "game_turn"
 
 class Game
   attr_reader :name
@@ -22,18 +22,7 @@ class Game
     end
 
     @players.each do |p|
-      die = Die.new
-      roll = die.roll
-
-      case roll
-      when 1..2
-        p.blam
-      when 5..6
-        p.w00t
-      else
-        puts "#{p.name} was skipped."
-      end
-      puts p
+      GameTurn.take_turn(p)
     end
   end
 end
