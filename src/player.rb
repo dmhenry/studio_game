@@ -12,6 +12,10 @@ class Player
     "I'm #{@name} with a health of #{@health} and a score of #{score}."
   end
 
+  def <=>(other)
+     other.score <=> score
+  end
+
   def name=(name)
     @name = name.downcase.capitalize
   end

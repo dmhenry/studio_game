@@ -7,4 +7,4 @@ game = Game.new("Knuckleheads")
 game.add(player: Player.new("moe"))
 game.add(player: Player.new("curly"))
 game.add(player: Player.new("larry"))
-game.play
+game.play(2)
