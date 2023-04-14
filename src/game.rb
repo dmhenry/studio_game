@@ -20,6 +20,12 @@ class Game
     @players.each do |p|
       puts p
     end
+
+    treasures = TreasureTrove::TREASURES
+    puts "\nThere are #{treasures.size} treasures to be found:"
+    treasures.each do |treasure|
+      puts "A #{treasure.name} is worth #{treasure.points} points"
+    end
   
     1.upto(turns) do |t|
       puts "\nRound #{t}"

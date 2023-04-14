@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative "die"
+require_relative "treasure_trove"
 
 module GameTurn
   def self.take_turn(player)
@@ -16,5 +17,8 @@ module GameTurn
       puts "#{player.name} was skipped."
     end
     puts player
+
+    treasure = TreasureTrove.random
+    puts "#{player.name} found a #{treasure.name} worth #{treasure.points} points."
   end
 end
