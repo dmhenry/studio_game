@@ -50,5 +50,16 @@ class Game
 
     sorted_players = @players.sort
     sorted_players.each { |p| puts "#{p.name.ljust(20, '.')} #{p.score}" }
+
+    @players.each do |p|
+      puts "\n#{p.name}'s point totals:"
+      puts "#{p.score} grand total points"
+    end
+
+    puts "\n#{total_points} total points from treasures found"
+  end
+
+  def total_points
+    @players.reduce(0) { |total, player| total + player.points }
   end
 end

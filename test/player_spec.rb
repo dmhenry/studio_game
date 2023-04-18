@@ -18,12 +18,17 @@ describe Player do
   end
 
   it "has a string representation" do
-    expect(@player.to_s).to eq("I'm Larry with a health of #{@initial_health} and a score of \
-#{@initial_health + @player.name.length}.")
+    @player.found_treasure(Treasure.new(:hammer, 50))
+    @player.found_treasure(Treasure.new(:hammer, 50))
+
+    expect(@player.to_s).to eq("I'm Larry with a health = 150, points = 100, and score = 250.")
   end
 
-  it "computes a score as the sum of its health and length of name" do
-    expect(@player.score).to eq(@initial_health + @player.name.length)
+  it "computes a score as the sum of its health and points" do
+    @player.found_treasure(Treasure.new(:hammer, 50))
+    @player.found_treasure(Treasure.new(:hammer, 50))
+
+    expect(@player.score).to eq(250)
   end
 
   it "increases health by 15 when w00ted" do
@@ -36,6 +41,22 @@ describe Player do
     @player.blam
 
     expect(@player.health).to eq(@initial_health - 10)
+  end
+
+  it "computes points as the sum of all treasure points" do
+    expect(@player.points).to eq(0)
+
+    @player.found_treasure(Treasure.new(:hammer, 50))
+
+    expect(@player.points).to eq(50)
+
+    @player.found_treasure(Treasure.new(:crowbar, 400))
+
+    expect(@player.points).to eq(450)
+
+    @player.found_treasure(Treasure.new(:hammer, 50))
+
+    expect(@player.points).to eq(500)
   end
 
   context "with a health greater than 100" do
