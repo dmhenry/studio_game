@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative 'treasure_trove' 
+
 class Player
   attr_reader :name, :health, :found_treasures
 
@@ -47,6 +49,12 @@ class Player
 
   def points
     @found_treasures.values.reduce(0, :+)
+  end
+
+  def each_found_treasure
+    @found_treasures.each do |name, points|
+      yield Treasure.new(name, points)
+    end
   end
 end
 

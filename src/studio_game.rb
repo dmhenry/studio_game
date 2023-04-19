@@ -7,4 +7,4 @@ game = Game.new("Knuckleheads")
 game.add(player: Player.new("moe"))
 game.add(player: Player.new("curly"))
 game.add(player: Player.new("larry"))
-game.play(2)
+game.play(10) { game.total_points >= 2000 }
