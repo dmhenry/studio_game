@@ -11,6 +11,11 @@ class Player
     @found_treasures = Hash.new(0)
   end
 
+  def self.from_csv(str)
+    name, health = str.split(/\s*,\s*/)
+    Player.new(name, Integer(health))
+  end
+
   def to_s
     "I'm #{@name} with a health = #{@health}, points = #{points}, and score = #{score}."
   end

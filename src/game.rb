@@ -2,6 +2,7 @@
 
 require_relative "player"
 require_relative "game_turn"
+require "CSV"
 
 class Game
   attr_reader :title
@@ -53,7 +54,7 @@ class Game
     puts "\n#{title} High Scores:\n"
 
     sorted_players = @players.sort
-    sorted_players.each { |p| puts "#{p.name.ljust(20, '.')} #{p.score}" }
+    sorted_players.each { |p| puts high_score_entry(p) }
 
     sorted_players.each do |p|
       puts "\n#{p.name}'s point totals:"
@@ -64,9 +65,27 @@ class Game
     end
 
     puts "\n#{total_points} total points from treasures found"
+    save_high_scores
   end
 
   def total_points
     @players.reduce(0) { |sum, player| sum + player.points }
+  end
+
+  def load_players(from_csv)
+    CSV.foreach(from_csv) do |name, health|
+      add(player: Player.new(name, health.to_i))
+    end
+  end
+
+  def save_high_scores(to_file="src/high_scores.txt")
+    File.open(to_file, "w") do |file|
+      file.puts "#{@title} High Scores:"
+      @players.sort.each { |p| file.puts high_score_entry(p) }
+    end
+  end
+
+  def high_score_entry(player)
+    "#{player.name.ljust(20, '.')} #{player.score}" 
   end
 end
