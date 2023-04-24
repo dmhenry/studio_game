@@ -1,9 +1,13 @@
 # frozen_string_literal: true
 
 require_relative 'treasure_trove' 
+require_relative 'playable' 
 
 class Player
-  attr_reader :name, :health, :found_treasures
+  include Playable
+  
+  attr_reader :name, :found_treasures
+  attr_accessor :health
 
   def initialize(name, health = 100)
     self.name = name
@@ -27,23 +31,9 @@ class Player
   def name=(name)
     @name = name.downcase.capitalize
   end
-
-  def blam
-    @health -= 10
-    puts "#{@name} got blammed!"
-  end
-
-  def w00t
-    @health += 15
-    puts "#{@name} got w00ted!"
-  end
-
+  
   def score
     @health + points
-  end
-
-  def strong?
-    @health > 100
   end
 
   def found_treasure(treasure)
