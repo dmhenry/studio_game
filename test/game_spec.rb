@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative "../src/game"
+require_relative "../src/die"
 
 describe Game do
   before do
