@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require_relative 'player'
-require_relative 'game_turn'
-require 'CSV'
+require_relative "player"
+require_relative "game_turn"
+require "CSV"
 
 module StudioGame
-  DEFAULT_PLAYER_FILE = File.join(File.dirname(__FILE__), 'high_scores.txt')
+  DEFAULT_PLAYER_FILE = File.join(File.dirname(__FILE__), "high_scores.txt")
 
   class Game
     attr_reader :title
@@ -30,7 +30,7 @@ module StudioGame
       treasures.each do |treasure|
         puts "A #{treasure.name} is worth #{treasure.points} points"
       end
-    
+
       1.upto(turns) do |t|
         if block_given?
           break if yield
@@ -89,7 +89,7 @@ module StudioGame
     end
 
     def high_score_entry(player)
-      "#{player.name.ljust(20, '.')} #{player.score}" 
+      "#{player.name.ljust(20, '.')} #{player.score}"
     end
   end
 end

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'player'
+require_relative "player"
 
 module StudioGame
   class BerserkPlayer < Player
@@ -15,7 +15,7 @@ module StudioGame
       @w00t_count += 1
       puts "#{@name} is berserk!" if berserk?
     end
-    
+
     def blam
       berserk? ? w00t : super
     end

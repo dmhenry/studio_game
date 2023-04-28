@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require_relative 'auditable'
+require_relative "auditable"
 
 module StudioGame
   class Die
     include Auditable
-    
+
     attr_reader :number
 
     def initialize

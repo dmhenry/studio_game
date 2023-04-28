@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require_relative 'treasure_trove' 
-require_relative 'playable' 
+require_relative "treasure_trove"
+require_relative "playable"
 
 module StudioGame
   class Player
     include Playable
-    
+
     attr_reader :name, :found_treasures
     attr_accessor :health
 
@@ -32,7 +32,7 @@ module StudioGame
     def name=(name)
       @name = name.downcase.capitalize
     end
-    
+
     def score
       @health + points
     end

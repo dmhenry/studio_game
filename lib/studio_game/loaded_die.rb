@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'auditable'
+require_relative "auditable"
 
 module StudioGame
   class LoadedDie

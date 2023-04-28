@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'studio_game/player'
+require "studio_game/player"
 
 module StudioGame
   class ClumsyPlayer < Player

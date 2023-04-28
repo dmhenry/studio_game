@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative 'die'
-require_relative 'treasure_trove'
+require_relative "die"
+require_relative "treasure_trove"
 
 module StudioGame
   module GameTurn

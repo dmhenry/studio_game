@@ -11,7 +11,7 @@ module StudioGame
       Treasure.new(:skillet, 100),
       Treasure.new(:broomstick, 200),
       Treasure.new(:crowbar, 400),
-    ]
+    ].freeze
 
     def self.random
       TREASURES.sample
