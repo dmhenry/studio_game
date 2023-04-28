@@ -9,10 +9,15 @@ Gem::Specification.new do |spec|
   spec.email = ["david.henry@shopify.com"]
 
   spec.summary = "Pragmatic Studio Ruby Course"
-  spec.description = "Pragmatic Studio Ruby Course"
+  spec.description  = File.read(File.join(File.dirname(__FILE__), 'README.md'))
   spec.homepage = "https://github.com/dmhenry/studio_game"
   spec.license = "MIT"
-  spec.required_ruby_version = ">= 3.2.1"
+  spec.required_ruby_version = ">= 3.2"
+  spec.add_development_dependency 'rspec', '~> 3.12', '>= 3.12.0'
+
+  spec.files         = Dir["{bin,lib,spec}/**/*"] + %w(LICENSE README.md)
+  spec.test_files    = Dir["spec/**/*"]
+  spec.executables   = [ 'studio_game' ]
 
   spec.metadata["allowed_push_host"] = ""
 
@@ -27,7 +32,7 @@ Gem::Specification.new do |spec|
       (File.expand_path(f) == __FILE__) || f.start_with?(*%w[bin/ test/ spec/ features/ .git .circleci appveyor])
     end
   end
-  spec.bindir = "exe"
+  spec.bindir = "bin"
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
